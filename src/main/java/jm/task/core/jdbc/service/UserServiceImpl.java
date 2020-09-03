@@ -69,6 +69,7 @@ public class UserServiceImpl implements UserService {
             ps.setString(3,lastName);
             ps.setInt(4, age);
             ps.executeUpdate();
+            System.out.println("Пользователь с именем "+name+" добавлен в базу данных");
         }
         catch (Exception e){
             e.printStackTrace();
