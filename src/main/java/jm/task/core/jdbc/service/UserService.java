@@ -17,18 +17,5 @@ public interface UserService {
     List<User> getAllUsers();
 
     void cleanUsersTable() throws SQLException;
-    /*
-    void createUsersTable();
-
-    void dropUsersTable();
-
-    void saveUser(String name, String lastName, byte age);
-
-    void removeUserById(long id);
-
-    List<User> getAllUsers();
-
-    void cleanUsersTable();
-     */
 
 }
