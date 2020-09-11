@@ -18,9 +18,14 @@ import java.util.Properties;
 public class Main {
     public static void main(String[] args) throws SQLException {
         UserService userService = new UserServiceHibernateImpl();
+        userService.dropUsersTable();
+        userService.createUsersTable();
         userService.saveUser("asd", "asd",(byte)1);
-        System.out.println(userService.getAllUsers().size());
-        userService.cleanUsersTable();
-        System.out.println(userService.getAllUsers().size());
+        User user = userService.getAllUsers().get(0);
+        userService.dropUsersTable();
+        userService.createUsersTable();
+        userService.saveUser("asd", "asd",(byte)1);
+        userService.removeUserById(1L);
+
     }
 }

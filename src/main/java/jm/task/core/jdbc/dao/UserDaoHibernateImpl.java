@@ -47,9 +47,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction tx = session.beginTransaction();
         session.persist( new User(name, lastName, age));
         tx.commit();
-        System.out.println("User saved");
-        session.close();
         factory.close();
+//        session.close();
     }
 
     @Override

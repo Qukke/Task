@@ -23,16 +23,16 @@ public class Util {
     }
 
     public static SessionFactory getSession(){
-        Properties properties = new Properties();
-        properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty(Environment.HBM2DDL_AUTO,"update");
-        properties.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
-        properties.setProperty(Environment.USER, "root");
-        properties.setProperty(Environment.PASS, "Ms0830151");
-        properties.setProperty(Environment.URL, "jdbc:mysql://localhost:3306/sys?serverTimezone=UTC");
-        Configuration cfg = new Configuration();
-        cfg.setProperties(properties);
-        cfg.addAnnotatedClass(User.class);
-        return cfg.buildSessionFactory();
+            Properties properties = new Properties();
+            properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+            properties.setProperty(Environment.HBM2DDL_AUTO, "update");
+            properties.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+            properties.setProperty(Environment.USER, "root");
+            properties.setProperty(Environment.PASS, "Ms0830151");
+            properties.setProperty(Environment.URL, "jdbc:mysql://localhost:3306/sys?serverTimezone=UTC");
+            Configuration cfg = new Configuration();
+            cfg.setProperties(properties);
+            cfg.addAnnotatedClass(User.class);
+            return cfg.buildSessionFactory();
     }
 }
