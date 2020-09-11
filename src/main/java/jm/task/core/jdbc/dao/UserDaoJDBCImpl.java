@@ -18,12 +18,12 @@ public class UserDaoJDBCImpl implements UserDao {
         if (!rs.next()) {
             try {
                 ps = connection.prepareStatement( "CREATE TABLE `sys`.`user` (\n" +
-                        "  `iduser` BIGINT NOT NULL AUTO_INCREMENT,\n" +
+                        "  `id` BIGINT NOT NULL AUTO_INCREMENT,\n" +
                         "  `name` VARCHAR(45) NULL,\n" +
                         "  `lastName` VARCHAR(45) NULL,\n" +
                         "  `age` INT NULL,\n" +
-                        "  PRIMARY KEY (`iduser`),\n" +
-                        "  UNIQUE INDEX `iduser_UNIQUE` (`iduser` ASC) VISIBLE);\n");
+                        "  PRIMARY KEY (`id`),\n" +
+                        "  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);\n");
                ps.executeUpdate();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -56,12 +56,12 @@ public class UserDaoJDBCImpl implements UserDao {
         Connection connection = Util.getConnection();
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT MAX(iduser) FROM USER");
+            ResultSet rs = st.executeQuery("SELECT MAX(id) FROM USER");
             long id = 0L;
             while (rs.next()) {
                 id = rs.getLong(1);
             }
-            ps = connection.prepareStatement("INSERT INTO USER (iduser, name, lastName, age) VALUES (?,?,?,?)");
+            ps = connection.prepareStatement("INSERT INTO USER (id, name, lastName, age) VALUES (?,?,?,?)");
             ps.setLong(1, id+1);
             ps.setString(2,name);
             ps.setString(3,lastName);
@@ -83,7 +83,7 @@ public class UserDaoJDBCImpl implements UserDao {
         PreparedStatement ps = null;
         Connection connection = Util.getConnection();
         try {
-            ps = connection.prepareStatement("DELETE FROM sys.user WHERE iduser = ?");
+            ps = connection.prepareStatement("DELETE FROM sys.user WHERE id = ?");
             ps.setLong(1,id);
             ps.executeUpdate();
         }
